@@ -7,7 +7,7 @@ $input=  json_decode(file_get_contents($url));
 
 //print_r($input);
 //print $input;
-    $messageText="Hi ".$input[0]['last_name'];
+    $messageText="Hi ".$input['last_name'];
     echo $messageText; 
     echo $input['last_name'];
     //sendTextMessage($recipientId, $messageText);
