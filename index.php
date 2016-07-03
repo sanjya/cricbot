@@ -36,7 +36,7 @@ if(preg_match('[time|current time|now]', strtolower($message))) {
 } else {
     $message_to_reply = 'Huh! what do you mean?';
 }
-//print $message_to_reply;
+print $sender."is sender";
 
 
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
@@ -69,7 +69,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Length: ' . strlen($data_string))                                                                       
 );                                                                                                                   
 
-$result = curl_exec($ch);
+//$result = curl_exec($ch);
 
 
  
