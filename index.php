@@ -184,13 +184,13 @@ function sendWelcomeMessage($recipientId){
 	//print $messageText;
 }
 function sendLiveMessage($recipientId){
+    
     $input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'),true);
-    $messageText=print_r($input);
-    sendTextMessage($recipientId, $messageText);
-	
+    
+    sendTextMessage($recipientId,$input[0]['t2']);
     if(count($input)==0){
       //no live matches
-      sendTextMessage($recipientId, "Sorry,There are no live matches\n ");
+      echo "Sorry :( There are no live matches\n ";
     }else{
        
 	   $messageText="";
@@ -200,10 +200,9 @@ function sendLiveMessage($recipientId){
             $messageText.="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
         }
         
-        //sendTextMessage($recipientId, $messageText);
-		//print $messageText;
+        sendTextMessage($recipientId, $messageText);
+		print $messageText;
     }
-    
     
 } 
 function sendTextMessage($recipientId, $messageText) {
