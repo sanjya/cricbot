@@ -162,7 +162,7 @@ echo "done";
         break;
     
       case "live":
-        sendWelcomeMessage($senderID);
+        sendLiveMessage($senderID);
         break;
     
 
@@ -185,7 +185,9 @@ function sendWelcomeMessage($recipientId){
 }
 function sendLiveMessage($recipientId){
     $input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'),true);
-    
+    $messageText=print_r($input);
+    sendTextMessage($recipientId, $messageText);
+	
     if(count($input)==0){
       //no live matches
       sendTextMessage($recipientId, "Sorry,There are no live matches\n ");
@@ -198,7 +200,7 @@ function sendLiveMessage($recipientId){
             $messageText.="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
         }
         
-        sendTextMessage($recipientId, $messageText);
+        //sendTextMessage($recipientId, $messageText);
 		//print $messageText;
     }
     
