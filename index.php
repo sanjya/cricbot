@@ -92,18 +92,16 @@ echo "done";
    $messageId = $message['mid'];
    $seq= $message['seq'];
   // You may get a text or attachment but not both
-   $messageText = $message['text'];
+   $messageText = $message['text'].$seq;
    $messageAttachments = $message['attachments'];
   
   if ($messageText) {
     // If we receive a text message, check to see if it matches any special
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
-    
-    //$messageText="hi";
-    switch ($messageText) {
-      case "hi":
-        sendWelcomeMessage($senderID);
+    switch (messageText) {
+      case 'image':
+        sendImageMessage($senderID);
         break;
       case 'button':
         sendButtonMessage($senderID);
@@ -114,30 +112,13 @@ echo "done";
       case 'receipt':
         sendReceiptMessage($senderID);
         break;
-      case 'help':
-        $messageText="type ";
-        sendTextMessage($senderID);
-        break;
-        
       default:
-        $messageText= "Sorry for rebellion \n type help to suppress";
         sendTextMessage($senderID, $messageText);
     }
   } elseif ($messageAttachments) {
     sendTextMessage($senderID, "Message with attachment received");
   }
   }
-  
-  
-  
-function sendWelcomeMessage($recipientId){
-    
-    $input=  json_decode(file_get_contents("https://graph.facebook.com/v2.6/$recipientId?access_token=EAAIiguQ4fcQBADgTCY78eONR4gly10IGjGaxNWIBLQziIaTnZANZBY8ZA69dixicjfAEw2cbpCaNBE8ZA37kblCpANOadZBtCm27FUSaZCbGMZCc89TmVHx6Xt34qNUZCP27olcX3GPlVZCdikt5TupoRZB488l3jIlS2DJfH63SSSdwZDZD"));
-    $messageText="Hi ".$input->first_name';
-    sendTextMessage($recipientId, $messageText);
-}
-
-
 function sendTextMessage($recipientId, $messageText) {
     $data = array("recipient" => array("id"=>$recipientId), 
                      "message" => array("text"=>$messageText));                                                                    
