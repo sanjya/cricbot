@@ -123,9 +123,10 @@ echo "done";
   console.log(JSON.stringify(message));*/
 
    $messageId = $message['mid'];
+   $seq= $message['seq'];
 
   // You may get a text or attachment but not both
-   $messageText = $message['text'];
+   $messageText = $message['text'].$seq;
    $messageAttachments = $message['attachments'];
 
   
