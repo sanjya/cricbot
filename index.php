@@ -100,7 +100,7 @@ echo "done";
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
     
-    $messageText="hi";
+    //$messageText="hi";
     switch ($messageText) {
       case "hi":
         sendWelcomeMessage($senderID);
@@ -116,7 +116,7 @@ echo "done";
         break;
       case 'help':
         $messageText="type ";
-        sendReceiptMessage($senderID);
+        sendTextMessage($senderID);
         break;
         
       default:
