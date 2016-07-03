@@ -188,7 +188,7 @@ function sendLiveMessage($recipientId){
     
     if(count($input)==0){
       //no live matches
-      sendTextMessage($recipientId, "Sorry :( There are no live matches\n ");
+      sendTextMessage($recipientId, "Sorry,There are no live matches\n ");
     }else{
        
 	   $messageText="";
@@ -199,7 +199,7 @@ function sendLiveMessage($recipientId){
         }
         
         sendTextMessage($recipientId, $messageText);
-		print $messageText;
+		//print $messageText;
     }
     
     
