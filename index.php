@@ -101,7 +101,7 @@ echo "done";
     // the text we received.
     
     
-    switch (trim($messageText)) {
+    switch ($messageText) {
       case "hi":
         sendWelcomeMessage($senderID);
         break;
