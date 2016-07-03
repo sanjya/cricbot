@@ -100,7 +100,7 @@ echo "done";
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
     switch (messageText) {
-      case 'hi' or 'hey' or 'hello':
+      case 'image':
         sendWelcomeMessage($senderID);
         break;
       case 'button':
