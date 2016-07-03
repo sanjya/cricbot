@@ -18,7 +18,7 @@ echo $challenge;
 }
 
 
-require('send.php');
+require('./send.php');
 
 $input = json_decode(file_get_contents('php://input'), true);
 
@@ -36,7 +36,7 @@ if(preg_match('[time|current time|now]', strtolower($message))) {
 } else {
     $message_to_reply = 'Huh! what do you mean?';
 }
-print $message_to_reply;
+//print $message_to_reply;
 
 
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
