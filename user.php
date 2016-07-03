@@ -1,7 +1,8 @@
 <?php
 $input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'));
-    
-    if(count($input)==0){
+ print_r($input);
+print $input;   
+    /*if(count($input)==0){
       //no live matches
       echo "Sorry :( There are no live matches\n ";
     }else{
@@ -11,7 +12,7 @@ $input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'));
         }
         
         echo $messageText;
-    }
+    }*/
 
 
 $recipientId="1084524121623966";
@@ -22,7 +23,7 @@ $input=  json_decode(file_get_contents($url));
 
 //print_r($input);
 //print $input;
-    $messageText="Hi ".$input['last_name'];
+    $messageText="Hi ".$input->last_name;
     echo $messageText; 
     echo $input['last_name'];
     //sendTextMessage($recipientId, $messageText);
