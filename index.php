@@ -162,7 +162,7 @@ echo "done";
         break;
     
       case "live":
-        sendLiveMessage($senderID);
+        sendWelcomeMessage($senderID);
         break;
     
 
