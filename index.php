@@ -188,16 +188,17 @@ function sendLiveMessage($recipientId){
     $input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'),true);
     
    sendTextMessage($recipientId,$input[0]['t2']." ".$input[1]['t2']);
-    if(count($input)==0){
+   $live_matches=count($input);
+    if($live_matches==0){
       //no live matches
       echo "Sorry :( There are no live matches\n ";
     }else{
        
 	   $messageText="";
 	   $count=0;
-        foreach ($input as $entry) {
-			$count++;
-            $messageText.="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
+        for ($i=0;$i<$live_matches;$i++) {
+	    $entry=$input[$i];		
+            $messageText.="Match $i ".$entry['t2']." vs ".$entry['t1']."\n ";
         }
         
         sendTextMessage($recipientId, $messageText);
