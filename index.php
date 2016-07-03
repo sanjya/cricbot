@@ -18,7 +18,6 @@ echo $challenge;
 }
 
 
-require('./send.php');
 
 $input = json_decode(file_get_contents('php://input'), true);
 
@@ -36,7 +35,7 @@ if(preg_match('[time|current time|now]', strtolower($message))) {
 } else {
     $message_to_reply = 'Huh! what do you mean?';
 }
-print $sender."is sender";
+print $message_to_reply;
 
 
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
@@ -62,7 +61,7 @@ $data = array("recipient" => array("id"=>"1084524121623966"), "message" => array
 $data_string = json_encode($data);                                                                                   
 $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=EAAIiguQ4fcQBADgTCY78eONR4gly10IGjGaxNWIBLQziIaTnZANZBY8ZA69dixicjfAEw2cbpCaNBE8ZA37kblCpANOadZBtCm27FUSaZCbGMZCc89TmVHx6Xt34qNUZCP27olcX3GPlVZCdikt5TupoRZB488l3jIlS2DJfH63SSSdwZDZD');                                                                      
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);                                                                  
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
     'Content-Type: application/json',                                                                                
@@ -74,11 +73,11 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 
  
 //Execute the request
-/*if(!empty($input['entry'][0]['messaging'][0]['message'])){
+if(!empty($input['entry'][0]['messaging'][0]['message'])){
     $result = curl_exec($ch);
 
-echo "done";
-}*/
+//echo "done";
+}
 
 
 ?>
