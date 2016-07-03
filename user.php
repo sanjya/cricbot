@@ -3,7 +3,7 @@ $input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'),t
     
     if(count($input)==0){
       //no live matches
-      sendTextMessage($recipientId, "Sorry :( There are no live matches\n ");
+      echo "Sorry :( There are no live matches\n ";
     }else{
        
 	   $messageText="";
@@ -13,7 +13,7 @@ $input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'),t
             $messageText.="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
         }
         
-        sendTextMessage($recipientId, $messageText);
+        //sendTextMessage($recipientId, $messageText);
 		print $messageText;
     }
 
