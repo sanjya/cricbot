@@ -99,8 +99,10 @@ echo "done";
     // If we receive a text message, check to see if it matches any special
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
+    
+    $messageText= "hi";
     switch ($messageText) {
-      case 'image':
+      case "hi":
         sendWelcomeMessage($senderID);
         break;
       case 'button':
