@@ -92,7 +92,7 @@ echo "done";
    $messageId = $message['mid'];
    $seq= $message['seq'];
   // You may get a text or attachment but not both
-   $messageText = $message['text'].$seq;
+   $messageText = $message['text'];
    $messageAttachments = $message['attachments'];
   
   if ($messageText) {
@@ -100,8 +100,8 @@ echo "done";
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
     switch (messageText) {
-      case 'image':
-        sendImageMessage($senderID);
+      case 'hi' or 'hey' or 'hello':
+        sendWelcomeMessage($senderID);
         break;
       case 'button':
         sendButtonMessage($senderID);
