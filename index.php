@@ -161,7 +161,7 @@ echo "done";
         sendTextMessage($senderID,$messageText);
         break;
     
-      case 'live':
+      case "live":
         sendLiveMessage($senderID);
         break;
     
