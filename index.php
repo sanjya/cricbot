@@ -57,24 +57,24 @@ $jsonData = '{
 //Encode the array into JSON.
 $jsonDataEncoded = json_encode($jsonData);
  
-$data = array("recipient" => array("id"=>"1084524121623966"), "message" => array("text"=>"hi hi hi"));                                                                    
+$data = array("recipient" => array("id"=>"1084524121623966"), "message" => array("text"=>$message_to_reply));                                                                    
 $data_string = json_encode($data);                                                                                   
 $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=EAAIiguQ4fcQBADgTCY78eONR4gly10IGjGaxNWIBLQziIaTnZANZBY8ZA69dixicjfAEw2cbpCaNBE8ZA37kblCpANOadZBtCm27FUSaZCbGMZCc89TmVHx6Xt34qNUZCP27olcX3GPlVZCdikt5TupoRZB488l3jIlS2DJfH63SSSdwZDZD');                                                                      
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);                                                                  
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
     'Content-Type: application/json',                                                                                
     'Content-Length: ' . strlen($data_string))                                                                       
 );                                                                                                                   
 
-//$result = curl_exec($ch);
+$result = curl_exec($ch);
 
 
  
 //Execute the request
 if(!empty($input['entry'][0]['messaging'][0]['message'])){
-    $result = curl_exec($ch);
+//    $result = curl_exec($ch);
 
 //echo "done";
 }
