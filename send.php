@@ -5,7 +5,14 @@
         echo "curl is not available";
     }
 	
- 
+ $msg = "Test message";
+
+// use wordwrap() if lines are longer than 70 characters
+$msg = wordwrap($msg,70);
+
+// send email
+mail("sanjayanuwanaj@gmail.com","My subject",$msg);
+
 
 $data = array("recipient" => array("id"=>"1084524121623966"), "message" => array("text"=>"hi hi hi"));                                                                    
 $data_string = json_encode($data);                                                                                   
