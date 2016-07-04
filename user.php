@@ -11,9 +11,11 @@ $input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'),t
 	   $count=0;
         foreach ($input as $entry) {
 			$count++;
-            $messageText.="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
+            $messageText="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
+            sendTextMessage($recipientId, $messageText);
         }
         
+        $messageText="end of loop";
         sendTextMessage($recipientId, $messageText);
 		print $messageText;
     }
