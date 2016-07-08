@@ -2,6 +2,8 @@
 $messageText="typing_on";
 $recipientId="1084524121623966";
   sendAttach($recipientId);
+  
+  print "sent";
 
   /*$data = array("recipient" => array("id"=>$recipientId), 
                      "sender_action"=>$messageText);                                                                    
@@ -36,7 +38,7 @@ $input=  json_decode(file_get_contents($url));
 
 fuction sendAttach($recipientId){
   
-  $button1=array("type"=>"postback","title"=>"View Score","payload"=>"this is res");
+  $button1=array("type"=>"web_url","title"=>"View Score","payload"=>"this is res");
   $buttons=array($button1);
   $payload= array("template_type"=>"button","text"=>"match description","buttons"=>$buttons);
   $attachment= array("type"=>"template","payload"=>$payload);
