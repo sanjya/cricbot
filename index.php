@@ -144,7 +144,7 @@ echo "done";
         break;
 
      case 'button':
-        sendButtonMessage($senderID);
+        //sendButtonMessage($senderID);
         break;
 
       case 'generic':
