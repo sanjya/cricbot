@@ -2,6 +2,7 @@
 $messageText="typing_on";
 $recipientId="1084524121623966";
   sendTextMessage($recipientId,"blala");
+  sendAttach($recipientId);
   
   print "sent";
 
