@@ -50,11 +50,11 @@ function sendAttach($recipientId){
 
 
 function sendImage($recipientId){
-  
+  //array("type"=>"image","payload"=>array("url"=>"https://petersapparel.com/img/shirt.png"))
   //$payload= array("url"=>"https://petersapparel.com/img/shirt.png");
    //$attachment= array("type"=>"image","payload"=>$payload);
   $data = array("recipient" => array("id"=>$recipientId), 
-                     "message" => array("type"=>"image","payload"=>array("url"=>"https://petersapparel.com/img/shirt.png")));
+                     "message" => array("text"=>"bla bla"));
   $data_string = json_encode($data);  
   callSendAPI($data_string);
 }
