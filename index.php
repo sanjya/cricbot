@@ -243,7 +243,7 @@ function sendImage($recipientId){
   //$payload= array("url"=>"https://petersapparel.com/img/shirt.png");
    //$attachment= array("type"=>"image","payload"=>$payload);
   $data = array("recipient" => array("id"=>$recipientId), 
-                     "message" => array("text"=>"bla bla"));
+                     "message" => array("type"=>"image","payload"=>array("url"=>"https://petersapparel.com/img/shirt.png")));
   $data_string = json_encode($data);  
   callSendAPI($data_string);
 }
