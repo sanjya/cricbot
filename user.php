@@ -36,7 +36,7 @@ $input=  json_decode(file_get_contents($url));
 }
 
 
-fuction sendAttach($recipientId){
+function sendAttach($recipientId){
   
   $button1=array("type"=>"web_url","title"=>"View Score","payload"=>"this is res");
   $buttons=array($button1);
@@ -47,6 +47,8 @@ fuction sendAttach($recipientId){
   $data_string = json_encode($data);  
   callSendAPI($data_string);
 }
+
+
 
 
 function callSendAPI($data_string){
