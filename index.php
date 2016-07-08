@@ -243,7 +243,12 @@ function sendImage($recipientId){
   //$payload= array("url"=>"https://petersapparel.com/img/shirt.png");
    //$attachment= array("type"=>"image","payload"=>$payload);
   $data = array("recipient" => array("id"=>$recipientId), 
-                     "message" => array("attachment"=>array("type"=>"image","payload"=>array("url"=>"https://petersapparel.com/img/shirt.png"))));
+                 "message" =>  array("attachment"=>array(
+                 					"type"=>"image",
+                 					"payload"=>array("url"=>"http://i.imgci.com/espncricinfo/ci_apple_webclip.png")))
+                 
+                 
+                 );
   $data_string = json_encode($data);  
   callSendAPI($data_string);
 }
