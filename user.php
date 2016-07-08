@@ -1,9 +1,35 @@
 <?php
 $messageText="typing_on";
 $recipientId="1084524121623966";
-  sendTextMessage($recipientId,"blala");
-  sendAttach($recipientId);
+ // sendTextMessage($recipientId,"blala");
+  //sendAttach($recipientId);
   
+  $datastring="{
+  \"recipient\":{
+    \"id\":\"$recipientId\"
+  },
+  \"message\":{
+    "attachment\":{
+      \"type\":\"template\",
+      \"payload\":{
+        "template_type":"button\",
+        \"text\":\"What do you want to do next?\",
+        \"buttons\":[
+          
+          {
+            \"type\":\"postback\",
+            \"title\":\"Start Chatting\",
+            \"payload\":\"USER_DEFINED_PAYLOAD\"
+          }
+        ]
+      }
+    }
+  }
+}";
+
+print $datastring;
+
+callSendAPI($datastring)
   print "sent";
 
   
