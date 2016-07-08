@@ -1,24 +1,13 @@
 <?php
-$input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'),true);
- $recipientId="1084524121623966";
- 
-    if(count($input)==0){
-      //no live matches
-      echo "Sorry :( There are no live matches\n ";
-    }else{
-       
-	   $messageText="";
-	   $count=0;
-        foreach ($input as $entry) {
-			$count++;
-            $messageText="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
-            sendTextMessage($recipientId, $messageText);
-        }
-        
-        $messageText="end of loop";
-        sendTextMessage($recipientId, $messageText);
-		print $messageText;
-    }
+$messageText="typing_on";
+$recipientId="1084524121623966";
+  
+
+  $data = array("recipient" => array("id"=>$recipientId), 
+                     "sender_action"=>$messageText);                                                                    
+    $data_string = json_encode($data);  
+
+    callSendAPI($data_string);
 
 
 
