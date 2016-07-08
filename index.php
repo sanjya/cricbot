@@ -162,7 +162,7 @@ echo "done";
         break;
     
       case "live":
-      	//sendAction($senderID);
+      	sendAction($senderID);
         sendLiveMessage($senderID);
         break;
     
@@ -224,7 +224,18 @@ function sendTextMessage($recipientId, $messageText) {
 }
 
 
+function sendAction($recipientId){
 
+  $messageText="typing_on";
+  
+  $data = array("recipient" => array("id"=>$recipientId), 
+                     "sender_action"=>$messageText);                                                                    
+  $data_string = json_encode($data);  
+
+  callSendAPI($data_string);
+    
+
+}
 
 
 function callSendAPI($data_string){
