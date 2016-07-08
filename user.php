@@ -29,7 +29,7 @@ function sendAttach($recipientId){
   $payload= array("template_type"=>"button","text"=>"match description","buttons"=>array());
   $attachment= array("type"=>"template","payload"=>$payload);
   $data = array("recipient" => array("id"=>$recipientId), 
-                     "message" => $attachment);
+                     "message" => array("attachment"=>$attachment));
   $data_string = json_encode($data);  
   callSendAPI($data_string);
 }
