@@ -207,6 +207,22 @@ function sendLiveMessage($recipientId){
     }
     
 } 
+
+function sendAction($recipientId){
+
+  $messageText="typing_on"
+  
+
+  $data = array("recipient" => array("id"=>$recipientId), 
+                     "message" => array("sender_action"=>$messageText));                                                                    
+    $data_string = json_encode($data);  
+
+    callSendAPI($data_string);
+    
+
+}
+
+
 function sendTextMessage($recipientId, $messageText) {
     
    
@@ -217,6 +233,9 @@ function sendTextMessage($recipientId, $messageText) {
     callSendAPI($data_string);
 
 }
+
+
+
 
 
 function callSendAPI($data_string){
