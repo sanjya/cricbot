@@ -162,6 +162,7 @@ echo "done";
         break;
     
       case "live":
+      	sendAction($senderID);
         sendLiveMessage($senderID);
         break;
     
