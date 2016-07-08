@@ -151,8 +151,8 @@ echo "done";
         sendGenericMessage($senderID);
         break;
 
-      case 'receipt':
-        sendReceiptMessage($senderID);
+      case 'image':
+        sendImage($senderID);
         break;
     
       case "help":
@@ -235,6 +235,17 @@ function sendAction($recipientId){
   callSendAPI($data_string);
     
 
+}
+
+
+function sendImage($recipientId){
+  //array("type"=>"image","payload"=>array("url"=>"https://petersapparel.com/img/shirt.png"))
+  //$payload= array("url"=>"https://petersapparel.com/img/shirt.png");
+   //$attachment= array("type"=>"image","payload"=>$payload);
+  $data = array("recipient" => array("id"=>$recipientId), 
+                     "message" => array("text"=>"bla bla"));
+  $data_string = json_encode($data);  
+  callSendAPI($data_string);
 }
 
 
