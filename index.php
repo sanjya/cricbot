@@ -238,6 +238,19 @@ function sendAction($recipientId){
 }
 
 
+function sendButtonMessage($recipientId){
+  
+  $button1=array("type"=>"web_url","title"=>"View Score","payload"=>"this is res");
+  $buttons=array($button1);
+  $payload= array("template_type"=>"button","text"=>"match description","buttons"=>array());
+  $attachment= array("type"=>"template","payload"=>$payload);
+  $data = array("recipient" => array("id"=>$recipientId), 
+                     "message" => array("attachment"=>$attachment));
+  $data_string = json_encode($data);  
+  callSendAPI($data_string);
+}
+
+
 function sendImage($recipientId){
   //array("type"=>"image","payload"=>array("url"=>"https://petersapparel.com/img/shirt.png"))
   //$payload= array("url"=>"https://petersapparel.com/img/shirt.png");
