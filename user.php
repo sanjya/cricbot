@@ -4,32 +4,20 @@ $recipientId="1084524121623966";
  // sendTextMessage($recipientId,"blala");
   //sendAttach($recipientId);
   
-  $datastring="{
-  \"recipient\":{
-    \"id\":\"$recipientId\"
-  },
-  \"message\":{
-    "attachment\":{
-      \"type\":\"template\",
-      \"payload\":{
-        "template_type":"button\",
-        \"text\":\"What do you want to do next?\",
-        \"buttons\":[
-          
-          {
-            \"type\":\"postback\",
-            \"title\":\"Start Chatting\",
-            \"payload\":\"USER_DEFINED_PAYLOAD\"
-          }
-        ]
-      }
-    }
-  }
-}";
+   $button1=array("type"=>"web_url","title"=>"View Score","payload"=>"this is res");
+  $buttons=array($button1);
+  $payload= array("template_type"=>"button","text"=>"match description","buttons"=>$buttons);
+  $attachment= array("type"=>"template","payload"=>$payload);
+  $data = array("recipient" => array("id"=>$recipientId), 
+                     "message" => array("attachment"=>$attachment));
+  $data_string = json_encode($data);
+  
+  print $data_string;
+  callSendAPI($data_string);
 
-print $datastring;
+print $data_string;
 
-callSendAPI($datastring)
+
   print "sent";
 
   
