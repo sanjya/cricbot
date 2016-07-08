@@ -1,7 +1,7 @@
 <?php
 $messageText="typing_on";
 $recipientId="1084524121623966";
-  sendAttach($recipientId);
+  sendImage($recipientId);
   
   print "sent";
 
@@ -48,6 +48,16 @@ function sendAttach($recipientId){
   callSendAPI($data_string);
 }
 
+
+function sendImage($recipientId){
+  
+  $payload= array("url"=>"https://petersapparel.com/img/shirt.png");
+   $attachment= array("type"=>"image","payload"=>$payload);
+  $data = array("recipient" => array("id"=>$recipientId), 
+                     "message" => $attachment);
+  $data_string = json_encode($data);  
+  callSendAPI($data_string);
+}
 
 
 
