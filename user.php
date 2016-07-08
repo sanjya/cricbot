@@ -1,9 +1,9 @@
 <?php
 $messageText="typing_on";
 $recipientId="1084524121623966";
-  
+  sendAttach($recipientId);
 
-  $data = array("recipient" => array("id"=>$recipientId), 
+  /*$data = array("recipient" => array("id"=>$recipientId), 
                      "sender_action"=>$messageText);                                                                    
     $data_string = json_encode($data);  
 
@@ -31,6 +31,19 @@ $input=  json_decode(file_get_contents($url));
                      "message" => array("text"=>$messageText));                                                                    
     $data_string = json_encode($data);  
     callSendAPI($data_string);
+}
+
+
+fuction sendAttach($recipientId){
+  
+  $button1=array("type"=>"postback","title"=>"View Score","payload"=>"this is res");
+  $buttons=array($button1);
+  $payload= array("template_type"=>"button","text"=>"match description","buttons"=>$buttons);
+  $attachment= array("type"=>"template","payload"=>$payload);
+  $data = array("recipient" => array("id"=>$recipientId), 
+                     "message" => $attachment);
+  $data_string = json_encode($data);  
+  callSendAPI($data_string);
 }
 
 
