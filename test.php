@@ -1,4 +1,4 @@
 <?php
 
-echo $VERIFY_TOKEN;
+echo getenv('VERIFY_TOKEN');
 ?>
