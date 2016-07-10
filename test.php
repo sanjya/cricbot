@@ -15,7 +15,7 @@ $messageData= array("recipient"=>"1084524121623966", "message"=>array("attachmen
 
 $data= json_encode($messageData);
 
-echo json_decode($data);
+print_r(json_decode($data));
 
 callSendAPI($data);
 
@@ -31,6 +31,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Length: ' . strlen($data_string))                                                                       
 );                                                                                                                   
 $result = curl_exec($ch);
+print_r($result);
 }
 
 
