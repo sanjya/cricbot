@@ -45,10 +45,11 @@ $input = json_decode(file_get_contents('php://input'), true);
               
               //receivedMessage($message);
               //print_r($event);
-              sendTextMessage("1084524121623966",$event);
+              //sendTextMessage("1084524121623966",$event);
             }
             else{
-              sendImage("1084524121623966");
+              sendTextMessage("1084524121623966",$event);
+              //sendImage("1084524121623966");
             }
 
             
