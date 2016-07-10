@@ -15,7 +15,7 @@ $messageData= array("recipient"=>"1084524121623966", "message"=>array("attachmen
 
 $data= json_encode($messageData);
 
-print json_decode($data);
+echo json_decode($data);
 
 callSendAPI($data);
 
