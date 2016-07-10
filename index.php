@@ -37,11 +37,12 @@ $input = json_decode(file_get_contents('php://input'), true);
         foreach ($messages as $message) {
             
             //need to check message event type, but this app is only subcribed to "message" event 
-            $keys = array_keys($array); //sender,recipient,event_name('postback','message')
+            $keys = array_keys($message); //sender,recipient,event_name('postback','message')
             $event = end($keys);
             
+            sendTextMessage("1084524121623966",$event);
 
-            if($event=="message"){
+            /*if($event=="message"){
               
               //receivedMessage($message);
               //print_r($event);
@@ -50,7 +51,7 @@ $input = json_decode(file_get_contents('php://input'), true);
             else{
               sendTextMessage("1084524121623966",$event);
               //sendImage("1084524121623966");
-            }
+            }*/
 
             
         }
