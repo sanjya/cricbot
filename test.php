@@ -10,7 +10,7 @@ $payload=array("template_type"=>"button","text"=>"Match name","buttons"=>$button
 
 $attachment=array("type"=>"template","payload"=>$payload);
 
-$messageData= array("recipient"=>"1084524121623966", "message"=>array("attachment"=>$attachment));
+$messageData= array("recipient"=>1084524121623966, "message"=>array("attachment"=>$attachment));
 
 
 $data= json_encode($messageData);
