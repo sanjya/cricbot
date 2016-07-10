@@ -41,10 +41,10 @@ $input = json_decode(file_get_contents('php://input'), true);
             $event = end($keys);
             
 
-            if(!$event=="postback"){
+            if($event=="message"){
               
               //receivedMessage($message);
-              print_r($event);
+              //print_r($event);
               sendLiveMessage("1084524121623966");
             }
             else{
