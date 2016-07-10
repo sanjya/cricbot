@@ -4,7 +4,7 @@ echo getenv('VERIFY_TOKEN');
 print "env\n";
 
 $button1= array("type"=>"post","title"=>"View Score","payload"=>"view_score_match_id:") ;
-$buttons= array($button);
+$buttons= array($button1);
 
 $payload=array("template_type"=>"button","text"=>"Match name","buttons"=>$buttons);
 
