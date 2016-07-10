@@ -30,12 +30,25 @@ $input = json_decode(file_get_contents('php://input'), true);
     $entries= $input['entry'];
     
     foreach ($entries as $entry) {
-        
+        //1084524121623966
         $messages= $entry['messaging'];
+
+
         foreach ($messages as $message) {
             
             //need to check message event type, but this app is only subcribed to "message" event 
-            receivedMessage($message);
+            $keys = array_keys($array); //sender,recipient,event_name('postback','message')
+            $event = end($keys);
+            
+
+            if($event=="postback"){
+              sendWelcomeMessage("1084524121623966");
+            }
+            else{
+              receivedMessage($message);
+            }
+
+            
         }
     }
   }
@@ -255,6 +268,27 @@ function sendImage($recipientId){
   callSendAPI($data_string);
 }
 
+
+function sendButtonMessage($recipientId){
+  
+
+      $button1= array("type"=>"postback","title"=>"View Score","payload"=>"View match 1 score:") ;
+      $buttons= array($button1);
+
+      $payload=array("template_type"=>"button","text"=>"Match name","buttons"=>$buttons);
+
+      $attachment=array("type"=>"template","payload"=>$payload);
+
+      $messageData= array("recipient"=>array("id"=>$recipientId), "message"=>array("attachment"=>$attachment));
+
+
+      $data= json_encode($messageData);
+
+      //print_r(json_decode($data));
+
+      callSendAPI($data);
+
+}
 
 function callSendAPI($data_string){
 $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=EAAIiguQ4fcQBADgTCY78eONR4gly10IGjGaxNWIBLQziIaTnZANZBY8ZA69dixicjfAEw2cbpCaNBE8ZA37kblCpANOadZBtCm27FUSaZCbGMZCc89TmVHx6Xt34qNUZCP27olcX3GPlVZCdikt5TupoRZB488l3jIlS2DJfH63SSSdwZDZD');                                                                      
