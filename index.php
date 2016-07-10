@@ -44,14 +44,11 @@ $input = json_decode(file_get_contents('php://input'), true);
 
             if($event=="message"){
               
-              receivedMessage($message)
+              sendTextMessage("1084524121623966",$event);
             }
             else if($event=="postback"){
-               receivedPostback($message);
-
-            }
-            else{
-              
+              sendTextMessage("1084524121623966",$event);
+              //sendImage("1084524121623966");
             }
 
             
@@ -195,34 +192,6 @@ echo "done";
   }
   }
   
-
-
-function  receivedPostback($message){
-    $senderID = $event['sender']['id'];
-   $recipientID = $event['recipient']['id'];
-   $timeOfMessage = $event['timestamp'];
-   $postback = $event['postback'];
-
-   $payLoadText= $postback['payload'];
-
-   switch($payLoadText){
-     case "live":
-        sendAction($senderID);
-        sendLiveMessage($senderID);
-        break;
-    
-
-      default:
-        $messageText= "Sorry for rebellion \n type help to suppress";
-        sendTextMessage($senderID, $messageText);
-    
-    
-    
-
-   }
-
-
-}
 
 function sendWelcomeMessage($recipientId){
     
