@@ -45,7 +45,7 @@ $input = json_decode(file_get_contents('php://input'), true);
               
               //receivedMessage($message);
               //print_r($event);
-              //sendTextMessage("1084524121623966",$event);
+              sendTextMessage("1084524121623966",$event);
             }
             else{
               sendTextMessage("1084524121623966",$event);
