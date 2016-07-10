@@ -43,7 +43,8 @@ $input = json_decode(file_get_contents('php://input'), true);
 
             if($event=="postback"){
               
-              receivedMessage($message);
+              //receivedMessage($message);
+              sendLiveMessage("1084524121623966");
             }
             else{
               sendImage("1084524121623966");
