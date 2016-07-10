@@ -40,18 +40,18 @@ $input = json_decode(file_get_contents('php://input'), true);
             $keys = array_keys($message); //sender,recipient,event_name('postback','message')
             $event = end($keys);
             
-            sendTextMessage("1084524121623966",$event);
+            
 
-            /*if($event=="message"){
+            if($event=="message"){
               
               //receivedMessage($message);
               //print_r($event);
               sendTextMessage("1084524121623966",$event);
             }
-            else{
+            else if($event=="postback"){
               sendTextMessage("1084524121623966",$event);
               //sendImage("1084524121623966");
-            }*/
+            }
 
             
         }
