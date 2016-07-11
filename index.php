@@ -51,10 +51,10 @@ $input = json_decode(file_get_contents('php://input'), true);
             else if($event=="postback"){
               //sendTextMessage("1084524121623966",$event);
               //sendImage("1084524121623966");
-
+              
               $postback= new ReceivedPostBack($message);
-              $postback->sendTextMessage("1084524121623966",$postback->sender_id);
-              //$postback->handle();
+              //$postback->sendTextMessage("1084524121623966",$postback->sender_id);
+              $postback->handle();
               //sendTextMessage("1084524121623966",$postback->sender_id);
             }
 
