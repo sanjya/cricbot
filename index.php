@@ -222,8 +222,9 @@ function sendLiveMessage($recipientId){
         foreach ($input as $entry) {
 			$count++;
             $messageText="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
+            $id=$entry['id'];
 
-             $button= array("type"=>"postback","title"=>"View Score match ","payload"=>"View Score $count") ;
+             $button= array("type"=>"postback","title"=>"View Score match ","payload"=>"View Score $id") ;
             sendButtonMessage($recipientId,$entry['t2']." vs ".$entry['t1'],$button);
         }
         

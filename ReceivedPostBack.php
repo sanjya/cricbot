@@ -47,21 +47,7 @@ class ReceivedPostBack {
         $output_array=array();
         preg_match("/\d/", $this->payload, $output_array);
         
-        $match_number= $output_array[0];
-        //print $match_number;
-        
-        $input= json_decode(file_get_contents('https://cricscore-api.appspot.com/csa'),true);
- 
- 
-        if(count($input)==0){
-        //no live matches
-        //sendTextMessage($recipientId,"Sorry :( There are no live matches\n ");
-        }else{
-       
-	   
-        $match_entry= $input[$match_number];
-        //print_r($match_entry);
-        $match_id= $match_entry['id'];
+        $match_id= $output_array[0];
         
         
         $input= json_decode(file_get_contents("https://cricscore-api.appspot.com/csa?id=$match_id"),true);
@@ -73,7 +59,7 @@ class ReceivedPostBack {
         
         
 		
-        }
+        
         
     }
     
