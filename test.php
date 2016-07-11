@@ -3,7 +3,7 @@
 echo getenv('VERIFY_TOKEN');
 print "env\n";
 
-$button1= array("type"=>"postback","title"=>"View Score","payload"=>"view_score_match_id:") ;
+$button1= array("type"=>"postback","title"=>"View Score match ","payload"=>"View Score match 2") ;
 $buttons= array($button1);
 
 $payload=array("template_type"=>"button","text"=>"Match name","buttons"=>$buttons);

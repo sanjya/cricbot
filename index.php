@@ -53,6 +53,7 @@ $input = json_decode(file_get_contents('php://input'), true);
               //sendImage("1084524121623966");
 
               $postback= new ReceivedPostBack($message);
+              $postback->handle();
               sendTextMessage("1084524121623966",$postback->sender_id);
             }
 
