@@ -283,22 +283,20 @@ function sendImage($recipientId){
 
 function sendButtonMessage($recipientId,$payload_text,$button){
   
+            $buttons= array($button);
 
-      $button1= array("type"=>"postback","title"=>"View Score","payload"=>"View Score  1 :") ;
-      $buttons= array($button);
+            $payload=array("template_type"=>"button","text"=>$payload_text,"buttons"=>$buttons);
 
-      $payload=array("template_type"=>"button","text"=>$payload_text,"buttons"=>$buttons);
+            $attachment=array("type"=>"template","payload"=>$payload);
 
-      $attachment=array("type"=>"template","payload"=>$payload);
-
-      $messageData= array("recipient"=>array("id"=>$recipientId), "message"=>array("attachment"=>$attachment));
+            $messageData= array("recipient"=>array("id"=>"1084524121623966"), "message"=>array("attachment"=>$attachment));
 
 
-      $data= json_encode($messageData);
+            $data= json_encode($messageData);
 
-      //print_r(json_decode($data));
+            //print_r(json_decode($data));
 
-      callSendAPI($data);
+            callSendAPI($data);
 
 }
 
