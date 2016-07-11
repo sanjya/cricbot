@@ -185,7 +185,7 @@ echo "done";
         break;
     
       case "live":
-      	sendAction($senderID);
+      	//sendAction($senderID);
         sendLiveMessage($senderID);
         break;
     
@@ -224,7 +224,7 @@ function sendLiveMessage($recipientId){
             $messageText="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
 
             
-            sendButtonMessage($recipientId,$messageText,$button);
+            sendButtonMessage($recipientId);
         }
         
         //$messageText="Type Match Number to get the live score ;)";
@@ -281,12 +281,12 @@ function sendImage($recipientId){
 }
 
 
-function sendButtonMessage($recipientId,$payload_text,$button){
+function sendButtonMessage($recipientId){
   
             $button1= array("type"=>"postback","title"=>"View Score match ","payload"=>"View Score 2") ;
-            $buttons= array($button);
+            $buttons= array($button1);
 
-            $payload=array("template_type"=>"button","text"=>$payload_text,"buttons"=>$buttons);
+            $payload=array("template_type"=>"button","text"=>"Match Name","buttons"=>$buttons);
 
             $attachment=array("type"=>"template","payload"=>$payload);
 
