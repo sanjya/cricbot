@@ -44,19 +44,19 @@ class ReceivedPostBack {
     
     function handleViewScore(){
         
-        $output_array=array();
-        preg_match("/\d/", $this->payload, $output_array);
+        preg_match_all('!\d+!', $this->payload, $matches);
+        $match_id=$matches[0][0];
+       
         
-        $match_id= $output_array[0];
         
         
         $input= json_decode(file_get_contents("https://cricscore-api.appspot.com/csa?id=$match_id"),true);
-        //print_r($input);
+        print_r($input);
         
-        $summry_enrty= $input[0];
+        /*$summry_enrty= $input[0];
         $this->sendTextMessage($this->sender_id, $summry_enrty['de']);
         $this->sendTextMessage($this->sender_id, $summry_enrty['si']);
-        
+        */
         
 		
         
