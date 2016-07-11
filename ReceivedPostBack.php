@@ -53,10 +53,10 @@ class ReceivedPostBack {
         $input= json_decode(file_get_contents("https://cricscore-api.appspot.com/csa?id=$match_id"),true);
         print_r($input);
         
-        /*$summry_enrty= $input[0];
+        $summry_enrty= $input[0];
         $this->sendTextMessage($this->sender_id, $summry_enrty['de']);
         $this->sendTextMessage($this->sender_id, $summry_enrty['si']);
-        */
+        
         
 		
         
