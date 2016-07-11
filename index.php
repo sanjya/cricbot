@@ -1,5 +1,7 @@
 <?php
 
+require './ReceivedPostBack.php';
+
 $access_token=getenv('access_token');//"EAAIiguQ4fcQBADgTCY78eONR4gly10IGjGaxNWIBLQziIaTnZANZBY8ZA69dixicjfAEw2cbpCaNBE8ZA37kblCpANOadZBtCm27FUSaZCbGMZCc89TmVHx6Xt34qNUZCP27olcX3GPlVZCdikt5TupoRZB488l3jIlS2DJfH63SSSdwZDZD";
 $verify_token="my_bot";
 $hub_verify_token="null";
@@ -44,11 +46,14 @@ $input = json_decode(file_get_contents('php://input'), true);
 
             if($event=="message"){
               
-              sendTextMessage("1084524121623966",$event);
+              receivedMessage($message);
             }
             else if($event=="postback"){
-              sendTextMessage("1084524121623966",$event);
+              //sendTextMessage("1084524121623966",$event);
               //sendImage("1084524121623966");
+
+              $postback= new ReceivedPostBack($message);
+              sendTextMessage("1084524121623966",$postback->sender_id);
             }
 
             
