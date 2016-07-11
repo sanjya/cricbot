@@ -1,5 +1,6 @@
 <?php
 
+require './SendAPI.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +10,7 @@
 /**
  * Description of ReceivedPostBack
  *
- * @author 
+ * @author sanjaya
  */
 class ReceivedPostBack {
     //put your code here
@@ -18,12 +19,14 @@ class ReceivedPostBack {
     var $recipient_id;
     var $timestamp;
     var $payload; //array
+    var $send_api;
     
     function __construct($message) {
         $this->sender_id=$message['sender']['id'];
         $this->recipient_id= $message['recipient']['id'];
         //$this->timestamp= $message['timestamp'];
         $this->payload= $message['postback']['payload'];
+        $this->send_api= new SendAPI(getenv('access_token'));
     }
     
     function handle(){
@@ -54,8 +57,8 @@ class ReceivedPostBack {
         print_r($input);
         
         $summry_enrty= $input[0];
-        $this->sendTextMessage($this->sender_id, $summry_enrty['de']);
-        $this->sendTextMessage($this->sender_id, $summry_enrty['si']);
+        $this->send_api->sendTextMessage($this->sender_id, $summry_enrty['de']);
+        $this->send_api->sendTextMessage($this->sender_id, $summry_enrty['si']);
         
         
 		
@@ -66,30 +69,6 @@ class ReceivedPostBack {
     
     
     
-    function sendTextMessage($recipientId, $messageText) {
-    
    
-    $data = array("recipient" => array("id"=>$recipientId), 
-                     "message" => array("text"=>$messageText));                                                                    
-    $data_string = json_encode($data);  
-
-    $this->callSendAPI($data_string);
-
-}
-    
-    
-    
-    
-    function callSendAPI($data_string){
-$ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=EAAIiguQ4fcQBADgTCY78eONR4gly10IGjGaxNWIBLQziIaTnZANZBY8ZA69dixicjfAEw2cbpCaNBE8ZA37kblCpANOadZBtCm27FUSaZCbGMZCc89TmVHx6Xt34qNUZCP27olcX3GPlVZCdikt5TupoRZB488l3jIlS2DJfH63SSSdwZDZD');                                                                      
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-    'Content-Type: application/json',                                                                                
-    'Content-Length: ' . strlen($data_string))                                                                       
-);                                                                                                                   
-$result = curl_exec($ch);
-}
 
 }

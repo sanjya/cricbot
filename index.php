@@ -2,6 +2,7 @@
 
 require './ReceivedPostBack.php';
 
+
 $access_token=getenv('access_token');
 $verify_token="my_bot";
 $hub_verify_token="null";
@@ -49,9 +50,7 @@ $input = json_decode(file_get_contents('php://input'), true);
               receivedMessage($message);
             }
             else if($event=="postback"){
-              //sendTextMessage("1084524121623966",$event);
-              //sendImage("1084524121623966");
-
+              
               $postback= new ReceivedPostBack($message);
               $postback->handle();
               
@@ -106,29 +105,7 @@ $jsonData = '{
     }
 }';
  
-//Encode the array into JSON.
-$jsonDataEncoded = json_encode($jsonData);
- 
-$data = array("recipient" => array("id"=>"1084524121623966"), "message" => array("text"=>"hi hi hi"));                                                                    
-$data_string = json_encode($data);                                                                                   
-$ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=');                                                                      
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);                                                                  
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-    'Content-Type: application/json',                                                                                
-    'Content-Length: ' . strlen($data_string))                                                                       
-);                                                                                                                   
 
-$result = curl_exec($ch);*/
-
-
- 
-//Execute the request
-/*if(!empty($input['entry'][0]['messaging'][0]['message'])){
-    $result = curl_exec($ch);
-
-echo "done";
 }*/
 
 
@@ -201,7 +178,7 @@ echo "done";
 
 function sendWelcomeMessage($recipientId){
     
-    $input=  json_decode(file_get_contents("https://graph.facebook.com/v2.6/".$recipientId."?access_token=EAAIiguQ4fcQBADgTCY78eONR4gly10IGjGaxNWIBLQziIaTnZANZBY8ZA69dixicjfAEw2cbpCaNBE8ZA37kblCpANOadZBtCm27FUSaZCbGMZCc89TmVHx6Xt34qNUZCP27olcX3GPlVZCdikt5TupoRZB488l3jIlS2DJfH63SSSdwZDZD"),true);
+    $input=  json_decode(file_get_contents("https://graph.facebook.com/v2.6/".$recipientId."?access_token=".$access_token),true);
     $messageText="Hi ".$input['first_name'];
     sendTextMessage($recipientId, $messageText);
 	//print $messageText;
