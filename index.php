@@ -51,7 +51,7 @@ $input = json_decode(file_get_contents('php://input'), true);
             else if($event=="postback"){
               //sendTextMessage("1084524121623966",$event);
               //sendImage("1084524121623966");
-              
+
               $postback= new ReceivedPostBack($message);
               //$postback->sendTextMessage("1084524121623966",$postback->sender_id);
               $postback->handle();
@@ -222,11 +222,13 @@ function sendLiveMessage($recipientId){
         foreach ($input as $entry) {
 			$count++;
             $messageText="Match $count ".$entry['t2']." vs ".$entry['t1']."\n ";
-            sendTextMessage($recipientId, $messageText);
+
+            $button= array("type"=>"postback","title"=>"View Score","payload"=>"View Score  $count ") ;
+            sendButtonMessage($recipientId,$button, $messageText);
         }
         
-        $messageText="Type Match Number to get the live score ;)";
-        sendTextMessage($recipientId, $messageText);
+        //$messageText="Type Match Number to get the live score ;)";
+        //sendTextMessage($recipientId, $messageText);
 		
     }
     
@@ -279,13 +281,13 @@ function sendImage($recipientId){
 }
 
 
-function sendButtonMessage($recipientId){
+function sendButtonMessage($recipientId,$payload_text,$button){
   
 
-      $button1= array("type"=>"postback","title"=>"View Score","payload"=>"View match 1 score:") ;
-      $buttons= array($button1);
+      $button1= array("type"=>"postback","title"=>"View Score","payload"=>"View Score  1 :") ;
+      $buttons= array($button);
 
-      $payload=array("template_type"=>"button","text"=>"Match name","buttons"=>$buttons);
+      $payload=array("template_type"=>"button","text"=>$payload_text,"buttons"=>$buttons);
 
       $attachment=array("type"=>"template","payload"=>$payload);
 
