@@ -35,7 +35,7 @@ class SendAPI {
     
     
     function callSendAPI($data_string){
-        $ch = curl_init("https://graph.facebook.com/v2.6/me/messages?access_token=$this->access_token");                                                                      
+        $ch = curl_init("https://graph.facebook.com/v2.6/me/messages?access_token=".$this->access_token);                                                                      
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      

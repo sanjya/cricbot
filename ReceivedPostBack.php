@@ -26,7 +26,7 @@ class ReceivedPostBack {
         $this->recipient_id= $message['recipient']['id'];
         //$this->timestamp= $message['timestamp'];
         $this->payload= $message['postback']['payload'];
-        $this->send_api= new SendAPI(getenv('access_token'));
+        $this->send_api= new SendAPI("EAAIiguQ4fcQBADgTCY78eONR4gly10IGjGaxNWIBLQziIaTnZANZBY8ZA69dixicjfAEw2cbpCaNBE8ZA37kblCpANOadZBtCm27FUSaZCbGMZCc89TmVHx6Xt34qNUZCP27olcX3GPlVZCdikt5TupoRZB488l3jIlS2DJfH63SSSdwZDZD");
     }
     
     function handle(){
