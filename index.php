@@ -133,7 +133,7 @@ $jsonData = '{
   }
   
 function sendWelcomeMessage($recipientId){
-    
+    global $access_token;
     $input=  json_decode(file_get_contents("https://graph.facebook.com/v2.6/".$recipientId."?access_token=".$access_token),true);
     $messageText="Hi ".$input['first_name'];
     sendTextMessage($recipientId, $messageText);
@@ -208,7 +208,9 @@ function sendButtonMessage($recipientId,$payload_text,$button){
             callSendAPI($data);
 }
 function callSendAPI($data_string){
-$ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=EAAIiguQ4fcQBADgTCY78eONR4gly10IGjGaxNWIBLQziIaTnZANZBY8ZA69dixicjfAEw2cbpCaNBE8ZA37kblCpANOadZBtCm27FUSaZCbGMZCc89TmVHx6Xt34qNUZCP27olcX3GPlVZCdikt5TupoRZB488l3jIlS2DJfH63SSSdwZDZD');                                                                      
+
+global $access_token;
+$ch = curl_init("https://graph.facebook.com/v2.6/me/messages?access_token=".$access_token);                                                                      
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
