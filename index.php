@@ -178,7 +178,7 @@ $jsonData = '{
 
 function sendWelcomeMessage($recipientId){
     
-    $input=  json_decode(file_get_contents("https://graph.facebook.com/v2.6/".$recipientId."?access_token=".$access_token),true);
+    $input=  json_decode(file_get_contents("https://graph.facebook.com/v2.6/".$recipientId."?access_token=".getenv('access-token')),true);
     $messageText="Hi ".$input['first_name'];
     sendTextMessage($recipientId, $messageText);
 	//print $messageText;
