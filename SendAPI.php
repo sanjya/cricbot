@@ -15,7 +15,7 @@ class SendAPI {
     //put your code here
     var $access_token;
     function __construct($access_token) {
-        $this->access_token;
+        $this->access_token=$access_token;
     }
     
     
